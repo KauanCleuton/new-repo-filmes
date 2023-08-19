@@ -1,0 +1,54 @@
+.principal {
+	font-family: 'Roboto Mono', monospace;
+	font-size: 15px;
+	width: 880px;
+	margin: auto;
+}
+
+form {
+	margin: 0 10px 0;
+	padding: 20px;
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+h2 {
+	font-weight: 400;
+	color: white;
+	margin: 0 10px 0;
+	letter-spacing: 4px;
+	background-color: teal;
+	padding: 16px;
+}
+
+input[type=text], input[type=number] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: none;
+	border-bottom: 1px solid black;
+}
+
+input[type=radio] {
+	width:24px;
+	height:24px;
+	position:relative;
+	top:6px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+	background-color: teal;
+	font: inherit;
+	letter-spacing: 1px;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+	overflow: visible;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}

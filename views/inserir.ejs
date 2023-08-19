@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Adicionar Filme</title>
+	<link rel="stylesheet" type="text/css" href="<%- '/styles/inserir.css' %>">
+</head>
+<body>
+
+	<div class="principal">
+		<h2>Adicionar um novo filme</h2>
+
+		<form name="formulario" method="POST" action="/inserir">
+			<label for="posicao">Posição</label>
+			<input type="number" name="posicao" id="posicao">
+			<label for="titulo">Título</label>
+			<input type="text" name="titulo" id="titulo">
+			<label for="genero" id="genero">Gênero</label>
+			<input type="text" name="genero" id="genero">
+			<label for="ano">Ano de produção</label>
+			<input type="number" name="ano" id="ano"><br/>
+			Resolução
+			<p>
+				<input type="radio" name="resolucao" id="1080p/3D" value="1080p/3D">
+				<label for="1080p/3D">1080p/3D</label>
+				<input type="radio" name="resolucao" id="1080p" value="1080p">
+				<label for="1080p">1080p</label>
+				<input type="radio" name="resolucao" id="720p" value="720p">
+				<label for="720p">720p</label>
+			</p><br/>
+			<label for="audio">Áudio</label>
+			<input type="text" name="audio" id="audio"><br/>
+			Assisti
+			<p>
+				<input type="radio" name="assisti" id="sim" value="Sim">
+				<label for="sim">Sim</label>
+				<input type="radio" name="assisti" id="nao" value="Não">
+				<label for="nao">Não</label>
+			</p>
+			<input type="submit" value="Adicionar filme">
+			<input type="reset" value="Limpar">
+			<a href='/'><input type="button" value="Voltar"></a>
+		</form>
+	</div>
+</body>
+</html>

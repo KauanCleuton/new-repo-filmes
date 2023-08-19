@@ -1,0 +1,46 @@
+/* Reset CSS */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ul, ol, li, table, tr, th, td, form, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    vertical-align: baseline;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+
+  body {
+    line-height: 1;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+  
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+
+  button, input, textarea, select {
+    background: none;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+
+  :focus {
+    outline: none;
+  }
+  

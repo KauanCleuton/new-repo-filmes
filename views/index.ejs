@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Minha lista de filmes</title>
+	<link rel="stylesheet" type="text/css" href="<%- '/styles/reset.css' %>">
+	<link rel="stylesheet" type="text/css" href="<%- '/styles/estilo.css' %>">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+	</style>
+	<script type="text/javascript">
+		function pegarValor() {
+			var nome = document.getElementById('').innerHTML;
+			return nome;
+		}
+	</script>
+</head>
+
+<body style="background-color: #fff">
+	<header id="cabecalho" class="principal">
+		<h1><img style="padding: 0.5rem;" src="/imgs/nodejs.png" alt="" width="150px" height="150px"></h1>
+		<form>
+			<input type="search" name="busca" id="busca" placeholder="Buscar">
+		</form>
+	</header>
+	<div id="slide" style="height: 150px; background-color: #fff;"></div>
+	<div class="principal" id="tabela" style=" position: relative; top: 7px; height: auto;">
+		<a href="/inserir" style="position: relative; top: 25px;">
+			<button type="button" id="adicionar" style="border-radius: 25px; position: relative;">
+				Novo filme
+			</button>
+		</a>
+		<div style="max-height: 400px; overflow: auto;">
+			<table style="background-color: #36b326; position: relative; color: #fff;">
+				<thead>
+					<tr style="position: sticky; top: 0; background-color: #141414;">
+						<th style="background-color: #141414" width='75px' id="posicao" value='1'>Posição</th>
+						<th style="background-color: #141414" width='455px' id="titulo">Título</th>
+						<th style="background-color: #141414" width='75px' id="genero">Gênero</th>
+						<th style="background-color: #141414" width='75px' id="ano">Ano</th>
+						<th style="background-color: #141414" width='75px' id="resolucao">Resolução</th>
+						<th style="background-color: #141414" width='75px' id="audio">Áudio</th>
+						<th style="background-color: #141414" width='75px' id="assistido">Já vi</th>
+						<th style="background-color: #141414" width='75px' id="opcoes">Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% filmes.forEach(filme => { %>
+						<tr>
+							<td><%= filme.posicao %></td>
+							<td><%= filme.titulo %></td>
+							<td><%= filme.genero %></td>
+							<td><%= filme.ano %></td>
+							<td><%= filme.resolucao %></td>
+							<td><%= filme.audio %></td>
+							<td><%= filme.assisti %></td>
+							<td>
+								<a href='/alterar'><img src="/imgs/update.png" width='25px'></a>
+								<a href='/delete/<%= filme.posicao %>'><img src='/imgs/delete.webp' width='25px'></a>
+							</td>							  
+						</tr>
+					<% }); %>	
+				</tbody>
+			</table>
+		</div>
+		
+</body>
+
+</html>
