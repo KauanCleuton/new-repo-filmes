@@ -71,19 +71,19 @@ app.post("/alterar", (request, response) => {
         response.status(500).send('Ocorreu um erro ao alterar um filme')
     }
 })
-app.post('/delete/:posicao', async (request, response) => {
-    const posicao = request.params.posicao
+// app.post('/delete/:posicao', async (request, response) => {
+//     const posicao = request.params.posicao
     
-    try {
-        await db.DeleteFilmeByPosicao(posicao)
-        const filmes = await db.GetFilmes()
-        response.render('index', { filmes: filmes })
-    }
-    catch(error) {
-        console.log('Erro ao remover o filme', error)
-        throw new Error ('Ocorreu um erro ao remover o filme')
-    }
-})
+//     try {
+//         await db.DeleteFilmeByPosicao(posicao)
+//         const filmes = await db.GetFilmes()
+//         response.render('index', { filmes: filmes })
+//     }
+//     catch(error) {
+//         console.log('Erro ao remover o filme', error)
+//         throw new Error ('Ocorreu um erro ao remover o filme')
+//     }
+// })
 
 
 
@@ -96,7 +96,13 @@ app.get('/alterar', (request, response) => {
     response.render('alterar');
 });
 app.get('/delete/:posicao', (request, response) => {
-    response.render('index');
+    const posicao = request.params.posicao
+
+    const deleteValueByPosition = db.DeleteFilmeByPosicao(posicao)
+
+    if(deleteValueByPosition) {
+        response.redirect('/')
+    }
 });
 app.listen(3333, () => {
     console.log('Server is running');

@@ -11,6 +11,7 @@ const dbConfig = {
 
 const connection = mysql.createConnection(dbConfig);
 
+
 connection.connect((err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados:', err);
@@ -21,17 +22,19 @@ connection.connect((err) => {
 
 
 const AddValues = async (posicao, titulo, genero, ano, resolucao, audio, assisti) => {
-    try {
-        const connection = mysql.createConnection(dbConfig);
-        const [rows] = await connection.promise().execute('INSERT INTO tbfilmes (posicao, titulo, genero, ano, resolucao, audio, assisti) VALUES (?, ?, ?, ?, ?, ?, ?) ', [
-            posicao, titulo, genero, ano, resolucao, audio, assisti
-        ]);
+        const connection = mysql.createConnection(dbConfig)
+        const AddValuesQuery = 'INSERT INTO tbfilmes (posicao, titulo, genero, ano, resolucao, audio, assisti) VALUES (?, ?, ?, ?, ?, ?, ?) '
+        const valuesQuery = [posicao, titulo, genero, ano, resolucao, audio, assisti]
+        connection.connect()
+        connection.query(AddValuesQuery, valuesQuery, (error, results) => {
+            if(error) {
+                console.log("Erro ao adicionar um filme no banco de dados")
+            }
+            else {
+                console.log("Filme adicionado com sucesso! ")
+            }
+        })
         connection.end();
-     }
-     catch (error) {
-        console.log("Erro ao inserir um novo filme", error);
-        throw new Error('Ocorreu um erro ao cadastrar um novo filme.');
-     }
 }
 
 const GetFilmes = () => {
@@ -61,20 +64,22 @@ const NameNotExist = (posicao, titulo) => {
 };
 
 const ChangeValues = async (posicao, titulo, genero, ano, resolucao, audio, assisti) => {
-    try {
         const connection = mysql.createConnection(dbConfig)
         const updateQuery = 'UPDATE tbfilmes SET posicao = ?, titulo = ?, genero = ?, ano = ?, resolucao = ?, audio = ?, assisti = ? WHERE posicao = ?'
 
         const valuesQuery = [posicao, titulo, genero, ano, resolucao, audio, assisti, posicao]
-        const [rows] = await connection.promise().execute(updateQuery, valuesQuery)
+
+        connection.query(updateQuery, valuesQuery, (error, results) => {
+            if(error) {
+                console.log('Error ao alterar um filme', error)
+            }
+            else {
+                console.log(`Filme da posicao ${posicao} alterado com sucesso! `)
+            }
+        })
         
         connection.end()
-        return rows
-    }
-    catch(error) {
-        console.log('Error ao inserir um novo filme', error)
-        throw new Error('Ocorreu um erro ao cadastrar um novo filme. ')
-    }
+       
 }
 
 const DeleteFilmeByPosicao = async (posicao) => {
